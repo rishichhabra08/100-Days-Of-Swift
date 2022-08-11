@@ -64,6 +64,7 @@ class ViewController: UIViewController {
         {
             title = "Correct"
             score+=1
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "\(score)", style: .done, target: self, action: nil)
         }else {
             title = "Wrong"
         }

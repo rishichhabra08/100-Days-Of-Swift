@@ -19,7 +19,7 @@ class ViewController: UITableViewController {
         
         title = "Storm Viewer"
         navigationController?.navigationBar.prefersLargeTitles = true
-        
+        navigationItem.rightBarButtonItem = UIbarButtonItem
         
         let fm = FileManager.default
         let path = Bundle.main.resourcePath!
@@ -42,8 +42,6 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
-        
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             vc.selectedImage = pictures[indexPath.row]
             vc.title = "Picture \(indexPath.row+1) / \(pictures.count)"

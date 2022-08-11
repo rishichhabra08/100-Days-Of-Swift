@@ -18,8 +18,10 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         
-        
+        title = selectedImage
         navigationItem.largeTitleDisplayMode = .never
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
+        
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -32,7 +34,23 @@ class DetailViewController: UIViewController {
             imageView.image = UIImage(named: imageLoad)
         }
         
+        
+        
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func shareTapped() {
+        
+        guard let image = imageView.image?.jpegData(compressionQuality: 1) else {
+            print("No Image Found!")
+            return
+        }
+        
+        let vc = UIActivityViewController(activityItems: [image,selectedImage!], applicationActivities: [])
+        
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        
+        present(vc, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
