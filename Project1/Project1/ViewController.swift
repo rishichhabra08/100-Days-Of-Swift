@@ -19,7 +19,7 @@ class ViewController: UITableViewController {
         
         title = "Storm Viewer"
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.rightBarButtonItem = UIbarButtonItem
+        
         
         let fm = FileManager.default
         let path = Bundle.main.resourcePath!
